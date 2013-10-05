@@ -40,10 +40,13 @@ data FileFormat =
     | FT_PartTable
     -- image formats
     | FT_JPEG
+    | FT_JPEG_EXIF
+    | FT_JFIF_EXIF
     | FT_PNG
     -- media formats & containers
     | FT_MP3
     | FT_OGG
+    | FT_AVI
     | FT_RIFF
     | FT_DEX
     | FT_Sqlite3
@@ -70,6 +73,9 @@ instance Show FileFormat where
     show FT_VHDX = "VHDX"
     show FT_PartTable = "Partition table"
     show FT_JPEG = "JPEG"
+    show FT_JPEG_EXIF = "EXIF JPEG"
+    show FT_JFIF_EXIF = "EXIF JFIF"
+    show FT_AVI = "AVI"
     show FT_PNG = "PNG"
     show FT_MP3 = "MP3"
     show FT_OGG = "OGG"
@@ -94,6 +100,8 @@ fileList =
     , (FT_ELF,               (0, "\x7f\x45\x4c\x46"))
     , (FT_PNG,               (0, "\137PNG"))
     , (FT_JPEG,              (0, "\255\216\255\224\NUL\DLE"))
+    , (FT_JPEG_EXIF,         (0, "\xFF\xD8\xFF\xE1"))
+    , (FT_JFIF_EXIF,         (0, "\xFF\xD8\xFF\xE0"))
     , (FT_CAML_CMI,          (0, "Caml1999I"))
     , (FT_Haskell_Interface, (0, "\SOH\250\206d"))
     , (FT_PDF PDF15,         (0, "%PDF-1.5"))
@@ -104,6 +112,7 @@ fileList =
     , (FT_VHDX,              (0, "vhdxfile"))
     , (FT_MP3,               (0, "ID3\EOT"))
     , (FT_OGG,               (0, "OggS"))
+    , (FT_AVI,               (0, "\x52\x49\x46\x46\xf2\x99\x6e\x00\x41\x56\x49\x20"))
     , (FT_RIFF,              (0, "RIFF"))
     , (FT_Python_Compiled,   (0, "\209\242\r\n"))
     , (FT_GZIP,              (0, "\US\139\b\NUL"))
