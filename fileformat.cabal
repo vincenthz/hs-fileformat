@@ -10,7 +10,7 @@ Synopsis:            get the fileformat of files
 Category:            Data
 Build-Type:          Simple
 Homepage:            http://github.com/vincenthz/hs-fileformat
-Cabal-Version:       >=1.6
+Cabal-Version:       >=1.8
 
 Flag test
   Description:       Build unit test
@@ -22,18 +22,14 @@ Library
   Exposed-modules:   Data.FileFormat
   ghc-options:       -Wall
 
-Executable           Tests
+Executable           fileformat-get
   Main-Is:           Tests.hs
+  hs-source-dirs:    src/
   if flag(test)
     Buildable:       True
     Build-depends:   base >= 4 && < 5
-                   , HUnit
                    , bytestring
-                   , cereal >= 0.3.3
-                   , vector >= 0.7.0
-                   , primitive >= 0.3.0
-                   , mtl
-                   , QuickCheck >= 2
+                   , fileformat
   else
     Buildable:       False
 
