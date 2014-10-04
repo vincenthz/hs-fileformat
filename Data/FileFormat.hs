@@ -28,6 +28,7 @@ data FileFormat =
     -- programs & libraries
       FT_ELF
     | FT_AR
+    | FT_MACH_O
     -- container/compression
     | FT_GZIP
     | FT_ZIP
@@ -102,6 +103,7 @@ fileList =
     , (FT_JPEG,              (0, "\255\216\255\224\NUL\DLE"))
     , (FT_JPEG_EXIF,         (0, "\xFF\xD8\xFF\xE1"))
     , (FT_JFIF_EXIF,         (0, "\xFF\xD8\xFF\xE0"))
+    , (FT_MACH_O,            (0, "\xcf\xfa\xed\xfe"))
     , (FT_CAML_CMI,          (0, "Caml1999I"))
     , (FT_Haskell_Interface, (0, "\SOH\250\206d"))
     , (FT_PDF PDF15,         (0, "%PDF-1.5"))
